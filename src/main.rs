@@ -1,24 +1,7 @@
+use actix_web::{web, App, HttpServer};
 mod server;
-use actix_web::{web, App, HttpResponse, HttpServer, Responder};
-
-async fn get_users() -> impl Responder {
-    HttpResponse::Ok().json("[{id:1, name:\"Qng\"}, {id:2, name:\"Ada\"}]")
-}
-async fn get_user_details() -> impl Responder {
-    HttpResponse::Ok().json("{id:1, name:\"Qng\"}")
-}
-
-async fn create_user() -> impl Responder {
-    HttpResponse::Ok().json("{ msg:\"User Created Successfully!\"}")
-}
-
-async fn update_user() -> impl Responder {
-    HttpResponse::Ok().json("{ msg:\"User Updated Successfully!\"}")
-}
-
-async fn delete_user() -> impl Responder {
-    HttpResponse::Ok().json("{ msg:\"User Deleted Successfully!\"}")
-}
+mod users;
+use users::*;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
