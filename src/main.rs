@@ -1,11 +1,11 @@
-use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use actix_web::{route, web, App, HttpResponse, HttpServer, Responder};
 
-#[get("/")]
+#[route("/hey", method = "GET")]
 async fn hello() -> impl Responder {
     HttpResponse::Ok().body("Hello world!")
 }
 
-#[post("/echo")]
+#[route("/hey", method = "POST")]
 async fn echo(body: String) -> impl Responder {
     HttpResponse::Ok().body(body)
 }
